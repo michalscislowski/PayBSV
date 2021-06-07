@@ -4,103 +4,50 @@ import handleAuthuser from './userAuth/handleauth'
 import React, { useState, useEffect } from 'react';
 import Profile from './login/profile';
 import Link from 'next/link';
-import storage from 'local-storage-fallback';
+import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined'
 import getUserData from './userAuth/getUserData';
 import {useRecoilState} from 'recoil'
-import {recoilUserId, recoilUserName, recoilUserStatus, recoilUserPrimaryPaymail, recoilUserAmount, recoilUserCurrency, recoilUserAvatarUrl, recoilUserEmail} from './states'
-import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
+import {recoilUserId, recoilUserStatus, recoilUserAmount, recoiluserProfile} from './states'
 
 export default function Header(props) {
   const router = useRouter();
   const { query } = router;
-  const [userName, setUserName] = useRecoilState(recoilUserName)
-  const [userPrimaryPaymail, setUserPrimaryPaymail] = useRecoilState(recoilUserPrimaryPaymail)
-  const [userEmail, setUserEmail] = useRecoilState(recoilUserEmail)
-  const [userAvatarUrl, setUserAvatarUrl] = useRecoilState(recoilUserAvatarUrl)
+  const [userProfile, setUserProfile] = useRecoilState(recoiluserProfile)
   const [userStatus, setUserStatus] = useRecoilState(recoilUserStatus)
   const [userAmount, setUserAmount] = useRecoilState(recoilUserAmount)
-  const [userCurrency, setUserCurrency] = useRecoilState(recoilUserCurrency)
   const [userId, setUserId] = useRecoilState(recoilUserId)
-  const [reload, setReload] = useState(false);
 
 
   function setMoneyButtonData(_profile, _balance, _userStatus) {
-    setUserName(_profile.name);
-    setUserPrimaryPaymail(_profile.primaryPaymail);
-    setUserEmail(_profile.email);
-    setUserAvatarUrl(_profile.avatarUrl);
-    setUserStatus(_userStatus.data.status);
-    setUserAmount(_balance.amount);
-    setUserCurrency(_balance.currency);
+    setUserProfile(_profile);
     setUserId(_profile.id);  
+    setUserStatus(_userStatus.data.status);
+    setUserAmount(_balance);
   }
 
-
-  // const userProfile = async() => { 
-  //   if (query.code && !userId) { 
-  //     await handleAuthuser();
-  //     const { profile, balance, userStatus } = await getUserData();
-  //     setMoneyButtonData(profile, balance, userStatus);
-  //   }
-
-  //   if (storage.getItem('mb_js_client:oauth_access_token') && !userId) {
-  //     const { profile, balance, userStatus } = await getUserData();
-  //     setMoneyButtonData(profile, balance, userStatus);
-  //   } 
-  // }
-  // userProfile();
-  // if (query.code) {
-  // userProfile().then(router.push('/home'));
-  // } else {
-  //   userProfile();
-  // }
-
-  useEffect(() => { (async() => {
-
-    if (query.code && !userId) { 
-       await handleAuthuser().then(router.push('/home'));
-      //  const { profile, balance, userStatus } = await getUserData();
-      //  setMoneyButtonData(profile, balance, userStatus);
-      //  setReload(true);
-      //  console.log(storage.getItem('mb_js_client:oauth_access_token'));
-    }
-
-    if (!userId) { 
-      const { profile, balance, userStatus } = await getUserData();
-      setMoneyButtonData(profile, balance, userStatus);
-      console.log(storage.getItem('mb_js_client:oauth_access_token'));
-   }
-  
-  })()
-
-    // if (storage.getItem('mb_js_client:oauth_access_token') && query.code) {
-
-    //   router.push('/home');
-    // //     const { profile, balance, userStatus } = await getUserData();
-    // //     setMoneyButtonData(profile, balance, userStatus);
-    // } 
+  useEffect(() => { 
+    (async() => {
+      if (query.code && !userId) { 
+        await handleAuthuser().then(router.push('/home'));
+      }
+      if (!userId) { 
+        const { profile, balance, userStatus } = await getUserData();
+        setMoneyButtonData(profile, balance, userStatus);
+        //console.log(storage.getItem('mb_js_client:oauth_access_token'));
+      }
+    })()
   },[router.isReady]);
 
   
-
   useEffect(() => {
-    console.log(userName);
-    console.log(userPrimaryPaymail);
-    console.log(userEmail);
-    console.log(userAvatarUrl);
-    console.log(userStatus);
-    console.log(userAmount);
-    console.log(userCurrency);
-    console.log(userId);
-      
-      
+    console.log("name: " + userProfile.name + ", id: " + userId);
+    console.log("email: " + userProfile.primaryPaymail);
+    console.log("balance: " + parseFloat(userAmount.amount).toFixed(2) + " USD");
   },[userId]);
 
   useEffect(() => {
     if (router.pathname != '/home') {
     (function(w,d,v3){
-      console.log(userName)
-      console.log(userEmail)
       w.chaportConfig = {
       appId : '609ef156cffe24321140dea7',
       };
@@ -109,8 +56,8 @@ export default function Header(props) {
         
       window.chaport.on('ready', function () {
         window.chaport.setVisitorData({
-        name: (userName),
-        email: (userEmail), 
+        name: (userProfile.name),
+        email: (userProfile.userEmail), 
         })
       })}
     },[userId]);
@@ -121,7 +68,7 @@ export default function Header(props) {
         <Link as="/" href="/" ><a className="logo"><HomeOutlinedIcon style={{ fontSize: '3rem',}}/></a></Link>
           <a className="push" >
             {!userId ? <LoginDialog /> :
-            <Profile name={userName} userId={userId} primaryPaymail={userPrimaryPaymail} userEmail={userEmail} userAvatar={userAvatarUrl} userAmount={userAmount} userCurrency={userCurrency} userStatus={userStatus}/> }
+            <Profile userId={userId} userProfile={userProfile} userAmount={userAmount} userStatus={userStatus}/> }
           </a>
       </header>
       <style jsx>{`

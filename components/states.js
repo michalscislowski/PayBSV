@@ -6,21 +6,6 @@ export const recoilUserId = atom({
     default: '',
 })
 
-export const recoilUserName = atom({
-    key: 'recoilUserName',
-    default: '',
-})
-
-export const recoilUserEmail = atom({
-    key: 'recoilUserEmail',
-    default: '',
-})
-
-export const recoilUserAvatarUrl = atom({
-    key: 'recoilUserAvatarUrl',
-    default: '',
-})
-
 export const recoilUserStatus = atom({
     key: 'recoilUserStatus',
     default: '',
@@ -30,12 +15,7 @@ export const recoilUserAmount = atom({
     default: '',
 })
 
-export const recoilUserCurrency = atom({
-    key: 'recoilUserCurrency',
-    default: '',
-})
-
-export const recoilUserPrimaryPaymail = atom({
-    key: 'recoilUserPrimaryPaymail',
+export const recoiluserProfile = atom({
+    key: 'recoiluserProfile',
     default: '',
 })
