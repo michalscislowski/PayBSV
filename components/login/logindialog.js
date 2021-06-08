@@ -28,8 +28,6 @@ const styles = (theme) => ({
 
 const useStyles = makeStyles({
   zalogujSie: { 
-    fontSize: '1.5rem', 
-    fontWeight: '900',
     ['@media (max-width:350px)']: {
       fontSize: '14px',
     }
@@ -77,7 +75,7 @@ export default function LoginDialog() {
 
   return (
     <div>
-      <Button  onClick={handleClickOpen} className={klasy.zalogujSie}>
+      <Button  onClick={handleClickOpen} className={klasy.zalogujSie} style={{fontSize: '1.5rem', fontWeight: '900',}}>
         Zaloguj Się
       </Button>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>

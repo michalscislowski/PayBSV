@@ -6,13 +6,16 @@ export default function ConfirmButton() {
   return (
     <div>
         <button className="custom-btn btn-5">
-            <span>NEXT</span>
+            <span>WYŚLIJ</span>
         </button>
         <style jsx>{`
 button {
     margin: 20px;
     outline: none;
-    font-size: 40px;
+    font-size: 2.3rem;
+}
+span {
+    font-weight: 900;
 }
 .custom-btn {
     width: 200px;

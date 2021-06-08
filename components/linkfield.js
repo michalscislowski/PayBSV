@@ -17,8 +17,8 @@ const useStyles = makeStyles({
   error: {}
 });
 
-export default function InputDemo() {
+export default function Linkfield() {
   const classes = useStyles();
 
-  return <Input classes={classes} placeholder="Enter link here" style={{width: '700px', fontWeight: '900', color: '#000'}}/>;
+  return <Input classes={classes} placeholder="Wklej link tutaj" style={{width: '700px', fontWeight: '900', color: '#000'}}/>;
 }
