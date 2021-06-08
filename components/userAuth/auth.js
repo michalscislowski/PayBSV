@@ -1,11 +1,12 @@
 const { MoneyButtonClient } = require('@moneybutton/api-client')
+const url = process.env.NEXT_PUBLIC_HOST_URL + "/home";
+const token = process.env.NEXT_PUBLIC_MONEY_BUTTON_TOKEN;
 
 //onst { MoneyButtonClient } = require('@moneybutton/api-client')
 export default function Authuser () {
-    const client = new MoneyButtonClient('d7e15422218ad2a1c62da5fb500036bb');
-    //const client = new MoneyButtonClient('857b9f01487e0170e16a9535a0bf7643');
+    const client = new MoneyButtonClient(token);
     //client.setRefreshToken(refreshToken)
-    client.requestAuthorization('auth.user_identity:read users.profiles:read users.profiles.email:read users.balance:read','https://paybsv.vercel.app/home');
+    client.requestAuthorization('auth.user_identity:read users.profiles:read users.profiles.email:read users.balance:read', url);
     //client.handleAuthorizationResponse();
     //const refreshToken = client.getRefreshToken();
     // console.log(refreshToken);
