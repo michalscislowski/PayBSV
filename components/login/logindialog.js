@@ -84,7 +84,7 @@ export default function LoginDialog() {
         </DialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
-            Wydawaj BSV! Zaloguj się przez MoneyButton aby kontynuować.
+            Zaloguj się przez MoneyButton aby kontynuować.
           </Typography>
         </DialogContent>
         <DialogActions>

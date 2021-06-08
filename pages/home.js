@@ -45,7 +45,7 @@ export default function Home() {
           flex-direction: column;
           justify-content: space-between;
           align-items: stretch;
-          background: black;
+          background: rgba(280, 179, 0, 1);
         }
         .loading-page {
           margin-top: 80px;

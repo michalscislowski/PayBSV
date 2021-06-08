@@ -13,6 +13,7 @@ button {
     margin: 20px;
     outline: none;
     font-size: 2.3rem;
+
 }
 span {
     font-weight: 900;
@@ -29,6 +30,7 @@ span {
     transition: all 0.3s ease;
     position: relative;
     display: inline-block;
+    border-radius: 6px;
 }
 .btn-5 {
     background: #000;

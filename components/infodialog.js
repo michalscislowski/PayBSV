@@ -2,10 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItem from '@material-ui/core/ListItem';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -25,11 +21,9 @@ const useStyles = makeStyles((theme) => ({
   title: {
     marginLeft: theme.spacing(2),
     flex: 1,
-    fontWeight: 900,
   },
   button: {
     margin: theme.spacing(1),
-    fontWeight: 900,
   },
 }));
 
@@ -51,7 +45,7 @@ export default function InfoDialog() {
 
   return (
     <div>
-      <Button variant="contained"  className={classes.button} startIcon={<SettingsOutlinedIcon />} onClick={handleClickOpen} >
+      <Button variant="contained"  className={classes.button} startIcon={<SettingsOutlinedIcon />} style={{fontWeight: '900',margin: 'auto'}} onClick={handleClickOpen} >
         JAK ZACZĄĆ?
       </Button>
       <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition} PaperProps={{ style: {backgroundImage: 'radial-gradient(rgba(234, 179, 0, 0.3), rgba(280, 179, 0, 1))'}, }}>
@@ -60,7 +54,7 @@ export default function InfoDialog() {
             <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
               <CloseIcon />
             </IconButton>
-            <Typography variant="h6" className={classes.title}>
+            <Typography variant="h6" className={classes.title} style={{fontWeight: '900'}}>
               JAK ZACZĄĆ?
             </Typography>
           </Toolbar>
