@@ -27,8 +27,12 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: '900',
     '&:hover' : {
       transform: 'scale(1.02)',
-      transition: '0.25s ease-in-out'
-    }
+      transition: '0.25s ease-in-out',
+      background: 'white', 
+      color: 'black'
+    },
+    background: 'white', 
+    color: 'black',
   },
 }));
 
@@ -65,29 +69,41 @@ export default function InfoDialog() {
           </Toolbar>
         </AppBar>
         <div className="main">
-          <Link as="/" href="/" ><b className="logo">PayBSV</b></Link>
+          <div className="logo">
+            <a>PayBSV</a>
+          </div>
           <div className="info">
             <div className="first">
               <a className="title">1. Wklej link</a>
               <img></img>
-              <a className="description">Wyślij nam dowolny link z porządanym przedmiotem</a>
+              <p className="description">Wyślij nam dowolny link z porządanym przedmiotem.</p>
             </div>
-            <div className="second">
-              <a className="title">2. Zaczekaj na weryfikacje</a>
+            <div className="first">
+              <a className="title">2. Zaczekaj na weryfikację</a>
               <img></img>
-              <a className="description">Zaczekaj na weryfikację oraz na kontakt mailowy</a>
+              <p className="description">Zaczekaj na weryfikację oraz na kontakt mailowy.</p>
             </div>
-            <div className="third">
+            <div className="first">
               <a className="title">3. Zapłać krypto</a>
               <img></img>
-              <a className="description">Zapłać za natychmiastową tranzakcję bitcoinem SV i ciesz się z udanych zakupów</a>
+              <p className="description">Zapłać za natychmiastową transakcję bitcoinem SV i ciesz się z udanych zakupów.</p>
             </div>
           </div>
-          <a><Button variant="contained" className={classes.button} startIcon={<KeyboardArrowRightIcon />} onClick={handleClose} style={{backgroundColor: 'black', color: 'white'}}>ZACZYNAJMY</Button></a>
+          <div>
+            <Button 
+              variant="contained" 
+              className={classes.button} 
+              startIcon={<KeyboardArrowRightIcon />} 
+              onClick={handleClose}
+            >
+              ZACZYNAJMY
+            </Button>
+          </div>
         </div>
       </Dialog>
       <style jsx>{`
         .main {
+          height: 100vh;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -102,27 +118,32 @@ export default function InfoDialog() {
           display: flex;
           flex-direction: row;
           font-weight: 900;
-        }
-        .first {
-          display:flex;
-          flex-direction: column;
-          max-width: 22vw;
-        }
-        .second {
-          display:flex;
-          flex-direction: column;
-          padding-left: 40px;
-          max-width: 24vw;
-        }
-        .third {
-          display:flex;
-          flex-direction: column;
-          padding-left: 40px;
-          max-width: 22vw;
+          width: 50%;
+          margin-bottom: 25px;
+          margin-top: 25px;
         }
         .title {
           font-size: 1.3rem;
           font-weight: 900;
+        }
+        .first {
+          margin: 15px;
+        }
+        @media only screen and (max-width: 499px) {
+          .info {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: stretch;
+            margin-bottom: 15px;
+            margin-top: 15px;
+          }
+          .first {
+            margin: 10px;
+          }
         }
       `}</style>
     </div>

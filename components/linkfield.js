@@ -21,8 +21,12 @@ const useStyles = makeStyles({
     },
     '& .MuiInput-underline:after': {
       borderBottomColor: '#020202',
-    }
+    },
+    ['@media (max-width:499px)']: {
+      width: 'calc(100% - 20px)',
   },
+  },
+  
 });
 
 export default function Linkfield() {

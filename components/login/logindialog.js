@@ -17,6 +17,7 @@ const styles = (theme) => ({
   root: {
     margin: 0,
     padding: theme.spacing(2),
+    background: 'rgba(252, 186, 3, 0.8)'
   },
   closeButton: {
     position: 'absolute',
@@ -30,7 +31,9 @@ const useStyles = makeStyles({
   zalogujSie: { 
     ['@media (max-width:350px)']: {
       fontSize: '14px',
-    }
+    },
+    fontSize: '1.5rem', 
+    fontWeight: '900',
   }
 });
 
@@ -51,6 +54,7 @@ const DialogTitle = withStyles(styles)((props) => {
 const DialogContent = withStyles((theme) => ({
   root: {
     padding: theme.spacing(2),
+    background: 'rgba(252, 186, 3, 0.8)'
   },
 }))(MuiDialogContent);
 
@@ -58,6 +62,7 @@ const DialogActions = withStyles((theme) => ({
   root: {
     margin: 0,
     padding: theme.spacing(1),
+    background: 'rgba(252, 186, 3, 0.8)'
   },
 }))(MuiDialogActions);
 
@@ -75,7 +80,7 @@ export default function LoginDialog() {
 
   return (
     <div>
-      <Button  onClick={handleClickOpen} className={klasy.zalogujSie} style={{fontSize: '1.5rem', fontWeight: '900',}}>
+      <Button  onClick={handleClickOpen} className={klasy.zalogujSie}>
         Zaloguj Się
       </Button>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
