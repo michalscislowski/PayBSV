@@ -13,9 +13,18 @@ import { makeStyles } from '@material-ui/core/styles';
 import AccountBalanceWalletOutlinedIcon from '@material-ui/icons/AccountBalanceWalletOutlined';
 
 const useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
+  kupBSV: {
+    margin: 10,
+    background: 'black', 
+    color: 'white', 
+    fontWeight: '900',
+    '&:hover' : {
+      color: 'white', 
+      background: 'black', 
+      transform: 'scale(1.02)',
+      transition: '0.25s ease-in-out'
+    }
+  }
 }));
 
 export default function Main() {
@@ -32,8 +41,19 @@ export default function Main() {
             <Linkfield/>
             <ConfirmButton />
             <div className="dialogs">
-              <a><InfoDialog/></a>
-              <a><Button variant="contained" className={classes.button} startIcon={<AccountBalanceWalletOutlinedIcon />} onClick={handleBuy} style={{backgroundColor: 'black', color: 'white', fontWeight: '900'}}>KupBSV</Button></a>
+              <div>
+                <InfoDialog/>
+              </div>
+              <div>
+                <Button 
+                  variant="contained" 
+                  startIcon={<AccountBalanceWalletOutlinedIcon />} 
+                  onClick={handleBuy} 
+                  className={classes.kupBSV}
+                >
+                  KupBSV
+                </Button>
+              </div>
             </div>
             <div className="socials">
                 <a className="facebook"><FacebookIcon aria-label="Facebook.com" onClick={() => window.open('https://www.facebook.com/BanachGroup')} /></a>
@@ -48,12 +68,12 @@ export default function Main() {
     display: flex;
     flex: 1;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center; 
 
     width: 100vw;
-    margin-top: 80px;
-    background-image: radial-gradient(rgba(234, 179, 0, 0.3), rgba(280, 179, 0, 1));
+    margin-top: 77px;
+    background-image: radial-gradient(rgba(280, 179, 0, 1), rgba(234, 179, 0, 0.3));
   }
   .logo {
       font-size: 5rem;
@@ -66,13 +86,11 @@ export default function Main() {
   .dialogs {
     display:flex;
   }
-  .dialogs a:hover {
-
-  }
   .socials {
     display: flex;
     justify-content: center;
     padding-right: 15px;
+    border-bottom: 1px solid #020202;
   }
   .socials a {
     margin-left: 15px;
@@ -81,32 +99,14 @@ export default function Main() {
   a:hover {
     cursor: pointer;
     transform: scale(1.15);
-  }
-  .facebook:hover {
-    color: #3b5998;
-  }
-  .linkedin:hover {
-      color: #0e76a8;
-  }
-  .instagram:hover {
-    color: #e4405f;
-  }
-  .twitter:hover {
-    color: #55acee;
+    color: #020202;
   }
   .twetch {
     margin-top: 2px;
     width: 20px;
     height: 20px;
-    background: url('/twetchlogoblack.png'), url('/twetchlogobluesmall.png');
+    background: url('/twetchlogoblack.png');
     background-size: 20px 20px;
-  }
-  .twetch:hover {
-    background: url('/twetchlogoblue.png');
-    background-size: 20px 20px;
-  }
-  .youtube:hover {
-    color: #cd201f;
   }
 `}</style>
     </div>

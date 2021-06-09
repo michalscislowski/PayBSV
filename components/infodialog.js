@@ -23,7 +23,12 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
   },
   button: {
-    margin: theme.spacing(1),
+    margin: 10,
+    fontWeight: '900',
+    '&:hover' : {
+      transform: 'scale(1.02)',
+      transition: '0.25s ease-in-out'
+    }
   },
 }));
 
@@ -45,7 +50,7 @@ export default function InfoDialog() {
 
   return (
     <div>
-      <Button variant="contained"  className={classes.button} startIcon={<SettingsOutlinedIcon />} style={{fontWeight: '900',margin: 'auto'}} onClick={handleClickOpen} >
+      <Button variant="contained"  className={classes.button} startIcon={<SettingsOutlinedIcon />} onClick={handleClickOpen} >
         JAK ZACZĄĆ?
       </Button>
       <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition} PaperProps={{ style: {backgroundImage: 'radial-gradient(rgba(234, 179, 0, 0.3), rgba(280, 179, 0, 1))'}, }}>

@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import TextField from '@material-ui/core/TextField';
 
 import Input from "@material-ui/core/Input";
 
@@ -12,13 +13,20 @@ const useStyles = makeStyles({
       borderBottom: "2px solid black"
     }
   },
-  disabled: {},
-  focused: {},
-  error: {}
+  inputStyle: {
+    width: '700px', 
+    fontWeight: '900', 
+    '& .Mui-focused' : {
+      color: "#020202"
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: '#020202',
+    }
+  },
 });
 
 export default function Linkfield() {
   const classes = useStyles();
 
-  return <Input classes={classes} placeholder="Wklej link tutaj" style={{width: '700px', fontWeight: '900', color: '#000'}}/>;
+  return <TextField id="standard-basic" label="your link goes here" className={classes.inputStyle} color="secondary"/>
 }

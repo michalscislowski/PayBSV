@@ -23,7 +23,9 @@ export default function Home() {
         <div><Header opacityVal={0}/></div>
 
         <div className="loading-page">
-          <img src="/B_group.png" alt="Banach Group LOGO"></img>
+          <p>BANACH</p>
+          <p>GROUP</p>
+          {/* <img src="/B_group.png" alt="Banach Group LOGO"></img> */}
         </div>
       </div>
       <style jsx> {`
@@ -43,19 +45,26 @@ export default function Home() {
           height: 100vh;
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
-          align-items: stretch;
+          flex-wrap: nowrap;
+          justify-content: center;
+          align-items: center;
+          align-content: center;
           background: rgba(280, 179, 0, 1);
         }
         .loading-page {
-          margin-top: 80px;
           margin-left: auto;
           margin-right: auto;
+          font-size: 90px;
         }
         img{
           animation: 2s ease-out 0s 1 zoomInLogo;
           width: 500px;
           height: 500px;
+        }
+        p {
+          animation: 2s ease-out 0s 1 zoomInLogo;
+          padding: 0;
+          margin: 0;
         }
         @media only screen and (max-width: 499px) {
           img{

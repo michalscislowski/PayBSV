@@ -77,8 +77,6 @@ export default function Header(props) {
     top: 0; 
     left: 0;
     width: 100%;
-    height: auto;
-    max-height: 80px;
     background: rgba(280, 179, 0, 1);
     font-size: 25px;	
     font-weight: 300;	
@@ -88,7 +86,7 @@ export default function Header(props) {
 
   a {
     letter-spacing: 2px;
-    padding: 20px 15px;
+    padding: 10px 15px;
     
   }
   .logo {
