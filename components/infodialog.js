@@ -73,17 +73,17 @@ export default function InfoDialog() {
             <a>PayBSV</a>
           </div>
           <div className="info">
-            <div className="first">
+            <div className="box">
               <a className="title">1. Wklej link</a>
               <img></img>
               <p className="description">Wyślij nam dowolny link z porządanym przedmiotem.</p>
             </div>
-            <div className="first">
+            <div className="box">
               <a className="title">2. Zaczekaj na weryfikację</a>
               <img></img>
               <p className="description">Zaczekaj na weryfikację oraz na kontakt mailowy.</p>
             </div>
-            <div className="first">
+            <div className="box">
               <a className="title">3. Zapłać krypto</a>
               <img></img>
               <p className="description">Zapłać za natychmiastową transakcję bitcoinem SV i ciesz się z udanych zakupów.</p>
@@ -125,9 +125,11 @@ export default function InfoDialog() {
         .title {
           font-size: 1.3rem;
           font-weight: 900;
+          
         }
-        .first {
+        .box {
           margin: 15px;
+          flex: 1 1 0;
         }
         @media only screen and (max-width: 499px) {
           .info {

@@ -65,7 +65,7 @@ export default function Header(props) {
   return (
     <div className="main">
       <header className="header">
-        <Link as="/" href="/" ><a className="logo"><HomeOutlinedIcon style={{ fontSize: '3rem',}}/></a></Link>
+        <Link as="/" href="/" ><a className="logo"><HomeOutlinedIcon style={{ fontSize: '3.5rem',}}/></a></Link>
           <a className="push" >
             {!userId ? <LoginDialog /> :
             <Profile userId={userId} userProfile={userProfile} userAmount={userAmount} userStatus={userStatus}/> }
@@ -77,6 +77,7 @@ export default function Header(props) {
     top: 0; 
     left: 0;
     width: 100%;
+    max-height: 78px;
     background: rgba(280, 179, 0, 1);
     font-size: 25px;	
     font-weight: 300;	

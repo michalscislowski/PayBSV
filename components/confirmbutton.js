@@ -13,7 +13,7 @@ button {
     margin: 20px;
     outline: none;
     font-size: 2.3rem;
-
+    border-radius: 8px;
 }
 span {
     font-weight: 900;
