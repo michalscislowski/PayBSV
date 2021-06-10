@@ -11,6 +11,7 @@ import Avatar from '@material-ui/core/Avatar';
 import storage from 'local-storage-fallback';
 import {useRouter} from "next/router";
 import CheckIcon from '@material-ui/icons/Check';
+import ItemDialog from '../itemdialog'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -143,6 +144,7 @@ export default function Profile(props) {
                     <MenuItem className={classes.menuItemNotClickable} ><span>Status: </span> <div style={{color: 'green', position: 'relative', top: -2.5}}>ZWERYFIKOWANY<CheckIcon style={{position: 'relative', top: 5, left: 5}}/></div></MenuItem>
                     <MenuItem className={classes.menuItemNotClickable} ><span>Balans konta: </span> {satoshis.toFixed(6)} BSV / {balanceInUSD.toFixed(2)} {currency} </MenuItem>
                     <MenuItem className={classes.menuItemNotClickable} ><span>Paymail: </span> {paymail} </MenuItem>   
+                    <MenuItem className={classes.menuItem} disableGutters><ItemDialog /> </MenuItem>   
                     <MenuItem className={classes.menuItem} onClick={handleHistory}>Historia transakcji</MenuItem>                 
                     <MenuItem className={classes.menuItem} onClick={handleClose, signOut}>Wyloguj</MenuItem>
                   </MenuList>

@@ -65,7 +65,7 @@ export default function Header(props) {
   return (
     <div className="main">
       <header className="header">
-        <Link as="/" href="/" ><div className="logo"><Image src="/bsvlogo.svg" alt="BSV logo" width="56" height="56" /></div></Link>
+        <Link as="/" href="/" ><div className="logo"><Image src="/bsvlogo.svg" alt="BSV logo" width="56" height="56"/></div></Link>
           <a className="push" >
             {!userId ? <LoginDialog /> :
             <Profile userId={userId} userProfile={userProfile} userAmount={userAmount} userStatus={userStatus}/> }
@@ -95,7 +95,6 @@ export default function Header(props) {
     font-weight: 700;
     margin-left: 15px;
    }
-   
   .push {
     margin-left: auto;
     cursor: pointer;
