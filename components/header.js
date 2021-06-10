@@ -3,8 +3,6 @@ import {useRouter} from "next/router";
 import handleAuthuser from './userAuth/handleauth'
 import React, { useState, useEffect } from 'react';
 import Profile from './login/profile';
-import Link from 'next/link';
-import Image from 'next/image'
 import getUserData from './userAuth/getUserData';
 import {useRecoilState} from 'recoil'
 import {recoilUserId, recoilUserStatus, recoilUserAmount, recoiluserProfile} from './states'
@@ -65,7 +63,10 @@ export default function Header(props) {
   return (
     <div className="main">
       <header className="header">
-        <Link as="/" href="/" ><div className="logo"><Image src="/bsvlogoborder.svg" alt="BSV logo" width="56" height="56"/></div></Link>
+        <div className="logo">
+          <input type="checkbox" id="btnControl" />
+          <label className="btn" htmlFor="btnControl"><img src="/bsvlogoborder.svg" alt="BSV logo" width="56" height="56"/></label>
+        </div>
           <a className="push" >
             {!userId ? <LoginDialog /> :
             <Profile userId={userId} userProfile={userProfile} userAmount={userAmount} userStatus={userStatus}/> }
@@ -85,16 +86,25 @@ export default function Header(props) {
     z-index: 2;
     opacity: ${props.opacityVal};
   }
-
+  img {
+    cursor: pointer;
+    transition-duration: 0.5s; 
+  }
   a, .logo {
     letter-spacing: 2px;
     padding: 10px 15px;
-    
   }
   .logo {
-    font-weight: 700;
     margin-left: 15px;
+    transition-duration: 0.5s; 
    }
+   #btnControl {
+      display: none;
+   }
+   #btnControl:checked + label > img {
+    transform: rotateX(360deg);
+    transition-duration: 0.5s;   
+  }
   .push {
     margin-left: auto;
     cursor: pointer;

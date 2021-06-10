@@ -4,14 +4,6 @@ import TextField from '@material-ui/core/TextField';
 
 
 const useStyles = makeStyles({
-  underline: {
-    "&:before": {
-      borderBottom: "2px solid gray"
-    },
-    "&:after": {
-      borderBottom: "2px solid black"
-    }
-  },
   inputStyle: {
     width: '700px', 
     fontWeight: '900', 
@@ -42,10 +34,9 @@ export default function Linkfield() {
     return regexp.test(s);
  }
 
-  const error = isUrl(values.name) !== true & values.name.length !== 0;
+  const error = isUrl(values.name) !== true && values.name.length !== 0;
 
   return <TextField
-    id="standard-basic" 
     label="tutaj dodaj link" 
     className={classes.inputStyle} 
     inputProps={{style: {fontWeight: '700'}}} 
