@@ -44,7 +44,8 @@ export default function Main() {
               <div>
                 <InfoDialog/>
               </div>
-              <div>
+              <div className="kupbsv">
+                {/* <div className="pytanie">Nie masz BSV?</div> */}
                 <Button 
                   variant="contained" 
                   startIcon={<AccountBalanceWalletOutlinedIcon />} 
@@ -70,11 +71,22 @@ export default function Main() {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center; 
-
     width: 100vw;
     margin-top: 77px;
-    background-image: radial-gradient(rgba(280, 179, 0, 1), rgba(234, 179, 0, 0.3));
+    background-image: radial-gradient(rgba(244, 219, 49, 0.75), rgba(244, 219, 49, 1));
   }
+  /* .kupbsv {
+    position: relative;
+  }
+  .pytanie {
+    width: auto;
+    display: inline;
+    position: absolute;
+    top: -30px;
+    left: 0;
+    font-size: 1.08rem;
+    font-weight: 900;
+  } */
   .logo {
       font-size: 5rem;
       font-weight: 900;
@@ -84,7 +96,7 @@ export default function Main() {
       height: 40px;
   }
   .dialogs {
-    display:flex;
+    display: flex;
   }
   .socials {
     display: flex;
@@ -107,6 +119,21 @@ export default function Main() {
     height: 20px;
     background: url('/twetchlogoblack.png');
     background-size: 20px 20px;
+  }
+  @media only screen and (max-width: 499px) {
+    .dialogs {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; 
+    }
+    /* .kupbsv {
+      margin-top: 30px;
+    }
+    .pytanie {
+      margin-bottom: 50px;
+      top: -1.125rem;
+    } */
   }
 `}</style>
     </div>

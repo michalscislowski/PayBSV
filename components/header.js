@@ -4,7 +4,7 @@ import handleAuthuser from './userAuth/handleauth'
 import React, { useState, useEffect } from 'react';
 import Profile from './login/profile';
 import Link from 'next/link';
-import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined'
+import Image from 'next/image'
 import getUserData from './userAuth/getUserData';
 import {useRecoilState} from 'recoil'
 import {recoilUserId, recoilUserStatus, recoilUserAmount, recoiluserProfile} from './states'
@@ -65,7 +65,7 @@ export default function Header(props) {
   return (
     <div className="main">
       <header className="header">
-        <Link as="/" href="/" ><a className="logo"><HomeOutlinedIcon style={{ fontSize: '3.5rem',}}/></a></Link>
+        <Link as="/" href="/" ><div className="logo"><Image src="/bsvlogo.svg" alt="BSV logo" width="56" height="56" /></div></Link>
           <a className="push" >
             {!userId ? <LoginDialog /> :
             <Profile userId={userId} userProfile={userProfile} userAmount={userAmount} userStatus={userStatus}/> }
@@ -78,14 +78,15 @@ export default function Header(props) {
     left: 0;
     width: 100%;
     max-height: 78px;
-    background: rgba(280, 179, 0, 1);
+    background-color: #f3ca20;
+    border-bottom: 1px solid black;
     font-size: 25px;	
     font-weight: 300;	
     z-index: 2;
     opacity: ${props.opacityVal};
   }
 
-  a {
+  a, .logo {
     letter-spacing: 2px;
     padding: 10px 15px;
     
@@ -109,9 +110,6 @@ export default function Header(props) {
     .push, .logo {
       font-size: 22px;	
       margin auto;
-    }
-    a {
-      padding: 20px 0;
     }
   }
 

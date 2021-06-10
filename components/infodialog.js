@@ -15,7 +15,7 @@ import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: 'relative',
-    backgroundColor: 'rgba(280, 179, 0, 1)',
+    backgroundColor:'#f3ca20',
     color: 'black'
   },
   title: {
@@ -57,7 +57,7 @@ export default function InfoDialog() {
       <Button variant="contained"  className={classes.button} startIcon={<SettingsOutlinedIcon />} onClick={handleClickOpen} >
         JAK ZACZĄĆ?
       </Button>
-      <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition} PaperProps={{ style: {backgroundImage: 'radial-gradient(rgba(234, 179, 0, 0.3), rgba(280, 179, 0, 1))'}, }}>
+      <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
         <AppBar className={classes.appBar}>
           <Toolbar>
             <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
@@ -86,7 +86,7 @@ export default function InfoDialog() {
             <div className="box">
               <a className="title">3. Zapłać krypto</a>
               <img></img>
-              <p className="description">Zapłać za natychmiastową transakcję bitcoinem SV i ciesz się z udanych zakupów.</p>
+              <p className="description">Zapłać natychmiastową transakcją bitcoinem SV i ciesz się z udanych zakupów.</p>
             </div>
           </div>
           <div>
@@ -109,12 +109,15 @@ export default function InfoDialog() {
           justify-content: center;
           align-items: center;
           align-content: center;
+          background-image: radial-gradient(rgba(244, 219, 49, 0.75), rgba(244, 219, 49, 1));
         }
         .logo {
           font-size: 5rem;
           font-weight: 900;
+          margin-bottom: 10px;
         }
         .info {
+          font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
           display: flex;
           flex-direction: row;
           font-weight: 900;
@@ -141,10 +144,17 @@ export default function InfoDialog() {
             align-items: center;
             align-content: stretch;
             margin-bottom: 15px;
-            margin-top: 15px;
+            margin-top: 5px;
           }
-          .first {
+          .box {
             margin: 10px;
+          }
+          .logo {
+            margin-top: 15px;
+            font-size: 4.25rem;
+          }
+          .main {
+            height: auto;
           }
         }
       `}</style>

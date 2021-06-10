@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     '& .MuiInput-underline:after': {
       borderBottomColor: '#020202',
     },
-    ['@media (max-width:499px)']: {
+    ['@media (max-width:749px)']: {
       width: 'calc(100% - 20px)',
   },
   },
@@ -50,7 +50,6 @@ export default function Linkfield() {
     className={classes.inputStyle} 
     inputProps={{style: {fontWeight: '700'}}} 
     InputLabelProps={{style: {fontWeight: '900'}}} 
-    color="secondary"
     value={values.name}
     onChange={handleChange("name")}
     helperText={error ? "Proszę wstawić poprawny link" : null}

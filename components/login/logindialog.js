@@ -25,9 +25,6 @@ const styles = (theme) => ({
     top: theme.spacing(1),
     color: theme.palette.grey[500],
   },
-});
-
-const useStyles = makeStyles({
   zalogujSie: { 
     ['@media (max-width:350px)']: {
       fontSize: '14px',
@@ -68,7 +65,6 @@ const DialogActions = withStyles((theme) => ({
 
 export default function LoginDialog() {
   const [open, setOpen] = React.useState(false);
-  const klasy = useStyles();
 
 
   const handleClickOpen = () => {
@@ -80,7 +76,13 @@ export default function LoginDialog() {
 
   return (
     <div>
-      <Button  onClick={handleClickOpen} className={klasy.zalogujSie}>
+      <Button onClick={handleClickOpen} style={{
+          ['@media (maxWidth:350px)']: {
+            fontSize: '14px',
+          },
+          fontSize: '1.5rem', 
+          fontWeight: '900',
+        }}>
         Zaloguj Się
       </Button>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
@@ -89,12 +91,12 @@ export default function LoginDialog() {
         </DialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
-            Zaloguj się przez MoneyButton aby kontynuować.
+            Zaloguj się przez MoneyButton, aby kontynuować.
           </Typography>
         </DialogContent>
         <DialogActions>
           <Button variant="contained" autoFocus onClick={handleClose, Authuser} color="primary">
-            Przejdź do MoneyButton
+            Zaloguj się z Money Button
           </Button>
         </DialogActions>
       </Dialog>
