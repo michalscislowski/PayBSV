@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
-import Link from 'next/link';
+import AccountBalanceWalletOutlinedIcon from '@material-ui/icons/AccountBalanceWalletOutlined';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 
 const useStyles = makeStyles((theme) => ({
@@ -34,6 +34,18 @@ const useStyles = makeStyles((theme) => ({
     background: 'white', 
     color: 'black',
   },
+  kupBSV: {
+    margin: 10,
+    background: 'black', 
+    color: 'white', 
+    fontWeight: '900',
+    '&:hover' : {
+      color: 'white', 
+      background: 'black', 
+      transform: 'scale(1.02)',
+      transition: '0.25s ease-in-out'
+    }
+  }
 }));
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -51,6 +63,11 @@ export default function InfoDialog() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleBuy = (e) => {
+    e.preventDefault()
+      window.open('https://www.kupbsv.pl', '_blank')
+  }
 
   return (
     <div>
@@ -88,6 +105,20 @@ export default function InfoDialog() {
               <img></img>
               <p className="description">Zapłać natychmiastową transakcją bitcoinem SV i ciesz się z udanych zakupów.</p>
             </div>
+            <div className="box">
+              <a className="title">4. Nie posiadasz BSV?</a>
+              <img></img>
+              <div className="kupbsv">
+                <Button 
+                  variant="contained" 
+                  startIcon={<AccountBalanceWalletOutlinedIcon />} 
+                  onClick={handleBuy} 
+                  className={classes.kupBSV}
+                >
+                  KupBSV
+                </Button>
+              </div>
+            </div>
           </div>
           <div>
             <Button 
@@ -120,6 +151,7 @@ export default function InfoDialog() {
           font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
           display: flex;
           flex-direction: row;
+          flex-wrap: wrap;
           font-weight: 900;
           width: 50%;
           margin-bottom: 25px;
@@ -128,11 +160,16 @@ export default function InfoDialog() {
         .title {
           font-size: 1.3rem;
           font-weight: 900;
-          
+        }
+        .kupbsv {
+          margin-top: 10px;
         }
         .box {
+          flex: 1 1 30%;
           margin: 15px;
-          flex: 1 1 0;
+        }
+        .description {
+          text-align: justify;
         }
         @media only screen and (max-width: 499px) {
           .info {
@@ -141,8 +178,7 @@ export default function InfoDialog() {
             flex-direction: column;
             flex-wrap: nowrap;
             justify-content: center;
-            align-items: center;
-            align-content: stretch;
+            align-items: flex-start;
             margin-bottom: 15px;
             margin-top: 5px;
           }
@@ -153,8 +189,17 @@ export default function InfoDialog() {
             margin-top: 15px;
             font-size: 4.25rem;
           }
-          .main {
-            height: auto;
+          .kupbsv {
+            text-align: center;
+          }
+          .description {
+            text-align: left;
+          }
+        }
+        @media only screen and (min-width: 500px) {
+          .box:last-child {
+            width: 100%;
+            text-align: center;
           }
         }
       `}</style>

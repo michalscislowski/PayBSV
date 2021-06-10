@@ -22,7 +22,7 @@ const useStyles = makeStyles({
       borderBottomColor: '#020202',
     },
     ['@media (max-width:749px)']: {
-      width: 'calc(100% - 20px)',
+      width: '80%',
   },
   },
 });

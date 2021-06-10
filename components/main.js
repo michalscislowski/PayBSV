@@ -8,33 +8,9 @@ import Link from 'next/link';
 import Linkfield from './linkfield'
 import ConfirmButton from '../components/confirmbutton';
 import InfoDialog from '../components/infodialog'
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
-import AccountBalanceWalletOutlinedIcon from '@material-ui/icons/AccountBalanceWalletOutlined';
 
-const useStyles = makeStyles((theme) => ({
-  kupBSV: {
-    margin: 10,
-    background: 'black', 
-    color: 'white', 
-    fontWeight: '900',
-    '&:hover' : {
-      color: 'white', 
-      background: 'black', 
-      transform: 'scale(1.02)',
-      transition: '0.25s ease-in-out'
-    }
-  }
-}));
 
 export default function Main() {
-  const classes = useStyles();
-
-  const handleBuy = (e) => {
-    e.preventDefault()
-      window.open('https://www.kupbsv.pl', '_blank')
-  }
-
   return (
     <div className="main">
             <Link as="/" href="/" ><b className="logo">PayBSV</b></Link>
@@ -43,17 +19,6 @@ export default function Main() {
             <div className="dialogs">
               <div>
                 <InfoDialog/>
-              </div>
-              <div className="kupbsv">
-                {/* <div className="pytanie">Nie masz BSV?</div> */}
-                <Button 
-                  variant="contained" 
-                  startIcon={<AccountBalanceWalletOutlinedIcon />} 
-                  onClick={handleBuy} 
-                  className={classes.kupBSV}
-                >
-                  KupBSV
-                </Button>
               </div>
             </div>
             <div className="socials">
@@ -75,18 +40,6 @@ export default function Main() {
     margin-top: 77px;
     background-image: radial-gradient(rgba(244, 219, 49, 0.75), rgba(244, 219, 49, 1));
   }
-  /* .kupbsv {
-    position: relative;
-  }
-  .pytanie {
-    width: auto;
-    display: inline;
-    position: absolute;
-    top: -30px;
-    left: 0;
-    font-size: 1.08rem;
-    font-weight: 900;
-  } */
   .logo {
       font-size: 5rem;
       font-weight: 900;
@@ -121,19 +74,7 @@ export default function Main() {
     background-size: 20px 20px;
   }
   @media only screen and (max-width: 499px) {
-    .dialogs {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center; 
-    }
-    /* .kupbsv {
-      margin-top: 30px;
-    }
-    .pytanie {
-      margin-bottom: 50px;
-      top: -1.125rem;
-    } */
+
   }
 `}</style>
     </div>
