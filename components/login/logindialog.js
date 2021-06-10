@@ -17,20 +17,14 @@ const styles = (theme) => ({
   root: {
     margin: 0,
     padding: theme.spacing(2),
-    background: 'rgba(252, 186, 3, 0.8)'
+    background: 'rgba(252, 186, 3, 0.8)',
+    fontFamily: 'system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji',
   },
   closeButton: {
     position: 'absolute',
     right: theme.spacing(1),
     top: theme.spacing(1),
     color: theme.palette.grey[500],
-  },
-  zalogujSie: { 
-    ['@media (max-width:350px)']: {
-      fontSize: '14px',
-    },
-    fontSize: '1.5rem', 
-    fontWeight: '900',
   }
 });
 
@@ -51,7 +45,10 @@ const DialogTitle = withStyles(styles)((props) => {
 const DialogContent = withStyles((theme) => ({
   root: {
     padding: theme.spacing(2),
-    background: 'rgba(252, 186, 3, 0.8)'
+    background: 'rgba(252, 186, 3, 0.8)',
+    fontFamily: 'system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji',
+    fontSize: '1rem',
+    fontWeight: 600,
   },
 }))(MuiDialogContent);
 
@@ -59,12 +56,30 @@ const DialogActions = withStyles((theme) => ({
   root: {
     margin: 0,
     padding: theme.spacing(1),
-    background: 'rgba(252, 186, 3, 0.8)'
+    background: 'rgba(252, 186, 3, 0.8)',
   },
 }))(MuiDialogActions);
 
+const useStyles = makeStyles({
+  zalogujSie: {
+    ['@media (min-width:490px)']: {
+      paddingTop: '0.75rem',
+      fontSize: '1.25rem', 
+    },
+    fontSize: '1rem', 
+    fontWeight: '900',
+    paddingLeft: '6rem',
+    paddingTop: '0rem',
+  },
+  btn: {
+    fontFamily: 'system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji',
+    fontSize: '20px'
+  }
+})
+
 export default function LoginDialog() {
   const [open, setOpen] = React.useState(false);
+  const klasy = useStyles();
 
 
   const handleClickOpen = () => {
@@ -76,13 +91,7 @@ export default function LoginDialog() {
 
   return (
     <div>
-      <Button onClick={handleClickOpen} style={{
-          ['@media (maxWidth:350px)']: {
-            fontSize: '14px',
-          },
-          fontSize: '1.5rem', 
-          fontWeight: '900',
-        }}>
+      <Button onClick={handleClickOpen} className={klasy.zalogujSie}>
         Zaloguj Się
       </Button>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
@@ -90,13 +99,13 @@ export default function LoginDialog() {
           Zaloguj się
         </DialogTitle>
         <DialogContent dividers>
-          <Typography gutterBottom>
+          <div>
             Zaloguj się przez MoneyButton, aby kontynuować.
-          </Typography>
+          </div>
         </DialogContent>
         <DialogActions>
-          <Button variant="contained" autoFocus onClick={handleClose, Authuser} color="primary">
-            Zaloguj się z Money Button
+          <Button variant="contained" autoFocus onClick={handleClose, Authuser} color="primary" classNmae={klasy.btn}>
+            Money Button
           </Button>
         </DialogActions>
       </Dialog>

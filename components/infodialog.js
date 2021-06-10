@@ -140,7 +140,7 @@ export default function InfoDialog() {
           justify-content: center;
           align-items: center;
           align-content: center;
-          background-image: radial-gradient(rgba(244, 219, 49, 0.75), rgba(244, 219, 49, 1));
+          background-image: radial-gradient(rgba(243, 202, 32, 0.7), rgba(243, 202, 32, 1));
         }
         .logo {
           font-size: 5rem;

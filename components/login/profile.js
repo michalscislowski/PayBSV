@@ -51,6 +51,15 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#000000', 
     fontSize: '14px', 
     marginLeft:'10px', 
+  },
+  loggedIn: {
+    color: '#000', 
+    fontSize: '1.5rem', 
+    fontWeight: '900', 
+    ['@media (max-width:499px)']: {
+      paddingLeft: '5.5rem', 
+      fontSize: '1.15rem', 
+    },
   }
 }));
 
@@ -127,7 +136,9 @@ export default function Profile(props) {
         <Button variant="primary" ref={anchorRef}
           aria-controls={open ? 'menu-list-grow' : undefined}
           aria-haspopup="true"
-          onClick={handleToggle} style={{ color: '#000', fontSize: '1.5rem', fontWeight: '900' }}>
+          onClick={handleToggle} 
+          className={classes.loggedIn}
+        >
         <Avatar src={avatar}  style={{width: "30px", height: "30px", marginRight:"10px"}} />
         {name}
       </Button>

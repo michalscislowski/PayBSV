@@ -67,10 +67,10 @@ export default function Header(props) {
           <input type="checkbox" id="btnControl" />
           <label className="btn" htmlFor="btnControl"><img src="/bsvlogoborder.svg" alt="BSV logo" width="56" height="56"/></label>
         </div>
-          <a className="push" >
-            {!userId ? <LoginDialog /> :
-            <Profile userId={userId} userProfile={userProfile} userAmount={userAmount} userStatus={userStatus}/> }
-          </a>
+        <a className="push" >
+          {!userId ? <LoginDialog /> :
+          <Profile userId={userId} userProfile={userProfile} userAmount={userAmount} userStatus={userStatus}/> }
+        </a>
       </header>
       <style jsx>{`
   .main {
@@ -80,7 +80,6 @@ export default function Header(props) {
     width: 100%;
     max-height: 78px;
     background-color: #f3ca20;
-    border-bottom: 1px solid black;
     font-size: 25px;	
     font-weight: 300;	
     z-index: 2;
@@ -92,7 +91,7 @@ export default function Header(props) {
   }
   a, .logo {
     letter-spacing: 2px;
-    padding: 10px 15px;
+    padding: 10px 5px;
   }
   .logo {
     margin-left: 15px;
@@ -106,14 +105,12 @@ export default function Header(props) {
     transition-duration: 0.5s;   
   }
   .push {
-    margin-left: auto;
     cursor: pointer;
     margin-right: 20px;
   }
-
   .header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
   }
   @media only screen and (max-width: 499px) {
     .push, .logo {

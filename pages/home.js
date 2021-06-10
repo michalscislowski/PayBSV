@@ -49,7 +49,7 @@ export default function Home() {
           justify-content: center;
           align-items: center;
           align-content: center;
-          background: rgba(280, 179, 0, 1);
+          background-image: radial-gradient(rgba(244, 219, 49, 0.75), rgba(244, 219, 49, 1));
         }
         .loading-page {
           margin-left: auto;
@@ -67,9 +67,8 @@ export default function Home() {
           margin: 0;
         }
         @media only screen and (max-width: 499px) {
-          img{
-            width: 90vw;
-            height: 90vw;
+          .loading-page{
+            font-size: 75px;
           }
         }
       `} </style>
