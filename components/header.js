@@ -65,7 +65,7 @@ export default function Header(props) {
       <header className="header">
         <div className="logo">
           <input type="checkbox" id="btnControl" />
-          <label className="btn" htmlFor="btnControl"><img src="/bsvlogoborder.svg" alt="BSV logo" width="56" height="56"/></label>
+          <label className="btn" htmlFor="btnControl"><img src="/bsvlogo.svg" alt="BSV logo" width="56" height="56"/></label>
         </div>
         <a className="push" >
           {!userId ? <LoginDialog /> :

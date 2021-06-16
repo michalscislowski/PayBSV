@@ -11,11 +11,12 @@ import InfoDialog from '../components/infodialog'
 
 
 export default function Main() {
+  
   return (
     <div className="main">
             <Link as="/" href="/" ><b className="logo">PayBSV</b></Link>
             <Linkfield/>
-            <ConfirmButton />
+            {/* <ConfirmButton /> */}
             <div className="dialogs">
               <div>
                 <InfoDialog/>
