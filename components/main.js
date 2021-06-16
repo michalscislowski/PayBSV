@@ -53,6 +53,11 @@ export default function Main() {
     padding-right: 15px;
     border-bottom: 1px solid #020202;
   }
+  a:hover {
+    cursor: pointer;
+    transform: scale(1.15);
+    color: #020202;
+  }
   .socials a {
     margin-left: 15px;
     transition: 0.3s;

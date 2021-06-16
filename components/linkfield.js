@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     '& .MuiInput-underline:after': {
       borderBottomColor: '#020202'
     },
-    ['@media (max-width:749px)']: {
+    ['@media (max-width:840px)']: {
       width: '80vw'
     }
   },
