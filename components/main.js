@@ -4,7 +4,6 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import Link from 'next/link';
 import Linkfield from './linkfield'
 import ConfirmButton from '../components/confirmbutton';
 import InfoDialog from '../components/infodialog'
@@ -14,7 +13,7 @@ export default function Main() {
   
   return (
     <div className="main">
-            <Link as="/" href="/" ><b className="logo">PayBSV</b></Link>
+            <div className="logo">PayBSV</div>
             <Linkfield/>
             {/* <ConfirmButton /> */}
             <div className="dialogs">
@@ -45,10 +44,6 @@ export default function Main() {
       font-size: 5rem;
       font-weight: 900;
   }
-  .linktext {
-      min-width: 1091px;
-      height: 40px;
-  }
   .dialogs {
     display: flex;
   }
@@ -62,20 +57,12 @@ export default function Main() {
     margin-left: 15px;
     transition: 0.3s;
   }
-  a:hover {
-    cursor: pointer;
-    transform: scale(1.15);
-    color: #020202;
-  }
   .twetch {
     margin-top: 2px;
     width: 20px;
     height: 20px;
     background: url('/twetchlogoblack.png');
     background-size: 20px 20px;
-  }
-  @media only screen and (max-width: 499px) {
-
   }
 `}</style>
     </div>
