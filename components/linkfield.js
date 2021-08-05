@@ -18,10 +18,15 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const useStyles = makeStyles({
   inputStyle: {
+    color: '#020202',
     width: '700px', 
+    marginTop: '10px',
     fontWeight: '900', 
-    '& .Mui-focused' : {
-      color: "#020202"
+    '& label.Mui-focused' : {
+      color: 'red',
+    },
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: '#0b7a75',
     },
     '& .MuiInput-underline:after': {
       borderBottomColor: '#020202'
@@ -65,37 +70,53 @@ const useStyles = makeStyles({
 export default function Linkfield() {
   const url_create = process.env.NEXT_PUBLIC_HOST_URL + "/api/addItem";
   const classes = useStyles();
-  const [values, setValues] = useState({
+  const [linkUrlInput, setLinkUrlInput] = useState({
+    name: ""
+  });
+  const [emailInput, setEmailInput] = useState({
     name: ""
   });
   const [userProfile, setUserProfile] = useRecoilState(recoiluserProfile);
   const [userId, setUserId] = useRecoilState(recoilUserId);
   const [open, setOpen] = useState(false);
-  const errorMsg = "Niepoprawny link";
+  const errorMsgLink = "Niepoprawny link";
+  const errorMsgEmail = "Niepoprawny email";
+
   const handleChange = name => event => {
-    setValues({ ...values, [name]: event.target.value });
+    setLinkUrlInput({ ...linkUrlInput, [name]: event.target.value });
   };
 
-  function isUrl(s) {
-    var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
-    return regexp.test(s);
+  const handleChangeEmail = name => event => {
+    setEmailInput({ ...emailInput, [name]: event.target.value });
+  };
+
+function isUrl(s) {
+  var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+  return regexp.test(s);
  }
 
-  const error = isUrl(values.name) !== true && values.name.length !== 0;
+ function isEmail(s) {
+  const regexp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return regexp.test(s);
+}
+
+  const linkError = isUrl(linkUrlInput.name) !== true && linkUrlInput.name.length !== 0;
+  const emailError = isEmail(emailInput.name) !== true && emailInput.name.length !== 0;
 
   function sendItem(val) {
-    if(!error && values.name.length !== 0)
+    if(!linkError && linkUrlInput.name.length !== 0 && !emailError && emailInput.name.length !== 0)
     {
       uploadItemToDB(val)
     }
     else {
-      console.log("error:", errorMsg)
+      linkError ? console.log("error:", errorMsgLink) : null;
+      emailError ? console.log("error:", errorMsgEmail) : null;
     }
   }
 
   const handleClose = () => {
     setOpen(false);
-    setValues({
+    setLinkUrlInput({
       name: ""
     });
   };
@@ -103,10 +124,10 @@ export default function Linkfield() {
   function uploadItemToDB(tmpVal) {
     console.log("przedmiot", tmpVal);
     const newItem = {
-      email: userProfile.email,
-      item: "piłka",
+      email: emailInput.name,
+      item: "unknown",
       status: "Added",
-      linkurl: values.name,
+      linkurl: linkUrlInput.name,
       mbuserid: userId,
     }
     console.log(JSON.stringify(newItem));
@@ -139,20 +160,32 @@ export default function Linkfield() {
           </DialogActions>
         </Dialog>
       </div>
-      <div style={{width: '100%'}}>
+      <div>
         <TextField
-          label="tutaj dodaj link" 
+          label="link do przedmiotu" 
           className={classes.inputStyle} 
           inputProps={{style: {fontWeight: '700'}}} 
-          InputLabelProps={{style: {fontWeight: '900'}}} 
-          value={values.name}
+          InputLabelProps={{style: {fontWeight: '900', color: '#404040'}}} 
+          value={linkUrlInput.name}
           onChange={handleChange("name")}
-          helperText={error ? "Proszę wstawić poprawny link" : null}
-          error={error}
+          helperText={linkError ? "niepoprawny link" : null}
+          error={linkError}
+        />
+      </div>
+      <div>
+        <TextField
+          label="e-mail" 
+          className={classes.inputStyle} 
+          inputProps={{style: {fontWeight: '700'}}} 
+          InputLabelProps={{style: {fontWeight: '900', color: '#404040'}}} 
+          value={emailInput.name}
+          onChange={handleChangeEmail("name")}
+          helperText={emailError ? "niepoprawny adres email" : null}
+          error={emailError}
         />
       </div>
       <div className="button">
-        <button onClick={() => {sendItem(values.name)}} className={classes.wyslijButton}>
+        <button onClick={() => {sendItem(linkUrlInput.name)}} className={classes.wyslijButton}>
             WYŚLIJ
         </button>
       </div>
