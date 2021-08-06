@@ -11,10 +11,16 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const useStyles = makeStyles({
   inputStyle: {
@@ -79,6 +85,7 @@ export default function Linkfield() {
   const [userProfile, setUserProfile] = useRecoilState(recoiluserProfile);
   const [userId, setUserId] = useRecoilState(recoilUserId);
   const [open, setOpen] = useState(false);
+  const [openSucces, setOpenSucces] = useState(false);
   const errorMsgLink = "Niepoprawny link";
   const errorMsgEmail = "Niepoprawny email";
 
@@ -89,6 +96,7 @@ export default function Linkfield() {
   const handleChangeEmail = name => event => {
     setEmailInput({ ...emailInput, [name]: event.target.value });
   };
+
 
 function isUrl(s) {
   var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
@@ -107,6 +115,7 @@ function isUrl(s) {
     if(!linkError && linkUrlInput.name.length !== 0 && !emailError && emailInput.name.length !== 0)
     {
       uploadItemToDB(val)
+      setOpenSucces(true);
     }
     else {
       linkError ? console.log("error:", errorMsgLink) : null;
@@ -116,7 +125,11 @@ function isUrl(s) {
 
   const handleClose = () => {
     setOpen(false);
+    setOpenSucces(false);
     setLinkUrlInput({
+      name: ""
+    });
+    setEmailInput({
       name: ""
     });
   };
@@ -189,6 +202,11 @@ function isUrl(s) {
             WYŚLIJ
         </button>
       </div>
+      <Snackbar open={openSucces} anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success">
+          Dane wysłane!
+        </Alert>
+      </Snackbar>
     <style jsx>{`
       .wrapper {
         display: flex;
